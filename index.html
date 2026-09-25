@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Kodaikanal School Tour 2026</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100%;font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif}
+body{min-height:100vh;overflow:hidden;color:#f5faf8;background:#06100d}
+body:before{
+content:"";position:fixed;inset:-25px;
+background:
+linear-gradient(rgba(3,13,11,.48),rgba(3,12,10,.78)),
+url("https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=2400&q=85") center/cover;
+filter:blur(5px);transform:scale(1.04);z-index:-3
+}
+body:after{content:"";position:fixed;inset:0;background:radial-gradient(circle at 50% 38%,transparent 5%,rgba(0,0,0,.38) 75%);z-index:-2}
+.stars{position:fixed;inset:0;background-image:radial-gradient(#fff 1px,transparent 1px);background-size:115px 115px;opacity:.16;z-index:-1}
+.wrapper{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
+.card{
+width:min(850px,94vw);text-align:center;padding:48px 26px 115px;
+border:1px solid rgba(255,255,255,.18);border-radius:32px;
+background:linear-gradient(135deg,rgba(13,30,25,.68),rgba(5,16,13,.52));
+box-shadow:0 30px 100px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.08);
+backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)
+}
+.kicker{font-size:12px;letter-spacing:5px;text-transform:uppercase;color:#b9d6ca}
+h1{font-size:clamp(48px,11vw,94px);line-height:.9;letter-spacing:-3px;margin:16px 0 12px;text-shadow:0 8px 35px #0008}
+.place{font-size:clamp(15px,3vw,22px);letter-spacing:6px;text-transform:uppercase;color:#d5e8df}
+.line{width:70px;height:1px;background:#a9dfc5;margin:26px auto;opacity:.7}
+.countdown{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;max-width:650px;margin:auto}
+.box{padding:20px 8px;border:1px solid rgba(255,255,255,.13);border-radius:18px;background:rgba(255,255,255,.075);box-shadow:inset 0 1px 0 rgba(255,255,255,.07)}
+.num{font-size:clamp(31px,7vw,58px);font-weight:800;letter-spacing:-1px}
+.label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#a9bbb4;margin-top:7px}
+.date{margin-top:27px;font-size:13px;letter-spacing:2px;color:#c2d2cc}
+.credit{position:absolute;bottom:20px;left:0;right:0;font-size:10px;color:#8fa39b;letter-spacing:1px}
+.tourist-bus{position:fixed;z-index:10;bottom:18px;left:-250px;width:210px;height:72px;background:linear-gradient(#f4f6ed,#c9d8ce);border-radius:13px 20px 9px 9px;box-shadow:0 10px 30px #0009;animation:drive 14s linear infinite}
+.tourist-bus:before{content:"TOUR";position:absolute;left:17px;bottom:13px;font-size:9px;font-weight:900;letter-spacing:2px;color:#315046}
+.bus-windows{position:absolute;left:16px;top:12px;width:148px;height:28px;border-radius:6px;background:linear-gradient(90deg,#15362f 0 22%,#78a49a 22% 24%,#15362f 24% 47%,#78a49a 47% 49%,#15362f 49% 72%,#78a49a 72% 74%,#15362f 74% 100%);box-shadow:inset 0 0 0 2px #a9c8bd}
+.bus-front{position:absolute;right:-18px;top:17px;width:20px;height:34px;background:#d5e2db;border-radius:0 8px 8px 0}
+.headlight{position:absolute;right:-3px;top:8px;width:5px;height:7px;background:#fff8bd;border-radius:2px;box-shadow:0 0 12px #fff8bd}
+.wheel{position:absolute;bottom:-10px;width:25px;height:25px;border-radius:50%;background:#101715;border:5px solid #667a72}
+.w1{left:30px}.w2{right:30px}
+@keyframes drive{from{left:-250px}to{left:calc(100% + 250px)}}
+@media(max-width:600px){
+.wrapper{padding:14px}.card{padding:38px 14px 100px;border-radius:25px}.countdown{grid-template-columns:repeat(2,1fr);gap:9px}.place{letter-spacing:4px}.tourist-bus{transform:scale(.82);transform-origin:bottom left}
+}
+</style>
+</head>
+<body>
+<div class="stars"></div>
+<div class="wrapper">
+<main class="card">
+<div class="kicker">School Tour 2026</div>
+<h1>KODAIKANAL</h1>
+<div class="place">The Journey Begins</div>
+<div class="line"></div>
+<div class="countdown">
+<div class="box"><div class="num" id="days">00</div><div class="label">Days</div></div>
+<div class="box"><div class="num" id="hours">00</div><div class="label">Hours</div></div>
+<div class="box"><div class="num" id="minutes">00</div><div class="label">Minutes</div></div>
+<div class="box"><div class="num" id="seconds">00</div><div class="label">Seconds</div></div>
+</div>
+<div class="date">15 OCTOBER 2026 · 9:00 PM IST</div>
+<div class="credit">Website designed by Funvro</div>
+</main>
+</div>
+
+<div class="tourist-bus" aria-label="Moving tourist bus">
+<div class="bus-windows"></div><div class="bus-front"><div class="headlight"></div></div>
+<div class="wheel w1"></div><div class="wheel w2"></div>
+</div>
+
+<script>
+const target=new Date("2026-10-15T21:00:00+05:30").getTime();
+function update(){
+ let diff=target-Date.now();
+ if(diff<=0){
+  document.querySelector(".countdown").innerHTML="<div style='grid-column:1/-1;font-size:clamp(24px,6vw,42px);font-weight:800'>THE JOURNEY HAS BEGUN! 🚌</div>";
+  document.querySelector(".date").textContent="WELCOME TO KODAIKANAL";
+  return;
+ }
+ const d=Math.floor(diff/86400000);diff%=86400000;
+ const h=Math.floor(diff/3600000);diff%=3600000;
+ const m=Math.floor(diff/60000);diff%=60000;
+ const s=Math.floor(diff/1000);
+ document.getElementById("days").textContent=String(d).padStart(2,"0");
+ document.getElementById("hours").textContent=String(h).padStart(2,"0");
+ document.getElementById("minutes").textContent=String(m).padStart(2,"0");
+ document.getElementById("seconds").textContent=String(s).padStart(2,"0");
+}
+update();setInterval(update,1000);
+</script>
+</body>
+</html>
